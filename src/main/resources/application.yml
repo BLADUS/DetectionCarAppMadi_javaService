@@ -6,6 +6,11 @@ spring:
     multipart:
       max-file-size: 3GB
       max-request-size: 3GB
+  datasource:
+    url: jdbc:postgresql://localhost:5432/MadiTracker
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
 
 flask:
   url: http://localhost:5000
