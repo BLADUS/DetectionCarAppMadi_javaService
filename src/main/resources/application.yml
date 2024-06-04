@@ -8,7 +8,7 @@ spring:
       max-request-size: 3GB
   datasource:
     url: jdbc:postgresql://localhost:5432/MadiTracker
-    username: postgres
+    username: osada
     password: 1234
     driver-class-name: org.postgresql.Driver
 
