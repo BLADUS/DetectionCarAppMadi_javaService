@@ -33,11 +33,9 @@ public class VideoController {
     @PostMapping("/upload")
     public ResponseEntity<String> handleFileUpload(@RequestParam("video") MultipartFile file) {
         try {
-            // Инициализация RestTemplate для HTTP-запроса
             RestTemplate restTemplate = new RestTemplate();
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(flaskUrl + "/upload_video");
 
-            // Создание ресурсов для файла
             ByteArrayResource videoResource = new ByteArrayResource(file.getBytes()) {
                 @Override
                 public String getFilename() {
@@ -45,20 +43,16 @@ public class VideoController {
                 }
             };
 
-            // Создание заголовков для запроса
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
-            // Создание сущности HTTP-запроса
             MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
             body.add("video", videoResource);
             HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 
-            // Отправка видео на Flask-сервер
             ResponseEntity<String> response = restTemplate.postForEntity(builder.toUriString(), requestEntity,
                     String.class);
 
-            // Возврат успешного ответа
             return new ResponseEntity<>("Video uploaded successfully", HttpStatus.OK);
         } catch (IOException e) {
             e.printStackTrace();
