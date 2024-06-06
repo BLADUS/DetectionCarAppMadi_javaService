@@ -8,9 +8,13 @@ spring:
       max-request-size: 3GB
   datasource:
     url: jdbc:postgresql://localhost:5432/MadiTracker
-    username: osada
+    username: postgres
     password: 1234
     driver-class-name: org.postgresql.Driver
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/MadiTracker
+      database: MadiTracker
 
 flask:
   url: http://localhost:5000

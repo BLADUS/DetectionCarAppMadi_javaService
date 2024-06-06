@@ -38,9 +38,7 @@ public class VideoController {
 public ResponseEntity<String> handleFileUpload(@RequestParam("video") MultipartFile file, HttpSession session) {
     try {
         User currentUser = (User) session.getAttribute("currentUser");
-        if (currentUser == null) {
-            return new ResponseEntity<>("User not logged in", HttpStatus.UNAUTHORIZED);
-        }
+
 
         String username = currentUser.getUsername();
 

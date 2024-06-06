@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты</title>
+</head>
+<body>
+
+<h1>Результаты</h1>
+
+<ul>
+    <li th:each="collection : ${results}">
+        <button th:text="${collection}">collectionName</button>
+    </li>
+</ul>
+
+</body>
+</html>
