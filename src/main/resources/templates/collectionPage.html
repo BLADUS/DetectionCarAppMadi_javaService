@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Документ</title>
+</head>
+<body>
+
+
+<ul>
+    <li th:each="document : ${documents}">
+        <span th:text="${document}"></span>
+    </li>
+</ul>
+
+
+</body>
+</html>

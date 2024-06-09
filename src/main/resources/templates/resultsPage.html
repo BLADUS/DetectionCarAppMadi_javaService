@@ -10,9 +10,11 @@
 
 <ul>
     <li th:each="collection : ${results}">
-        <button th:text="${collection}">collectionName</button>
+        <button><a th:href="@{/results/{collectionName}(collectionName=${collection})}"><span th:text="${collection}"></span></a></button>
     </li>
+       
 </ul>
+
 
 </body>
 </html>

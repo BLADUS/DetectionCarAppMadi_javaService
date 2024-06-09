@@ -2,7 +2,10 @@ package com.example.DetectionCarAppMadi_javaService.Repositories;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +19,7 @@ public class CollectionRepository {
     private final MongoDatabase database;
 
     public CollectionRepository(@Value("${spring.data.mongodb.uri}") String connectionString,
-                                       @Value("${spring.data.mongodb.database}") String dbName) {
+            @Value("${spring.data.mongodb.database}") String dbName) {
         this.mongoClient = MongoClients.create(connectionString);
         this.database = mongoClient.getDatabase(dbName);
     }
@@ -31,5 +34,8 @@ public class CollectionRepository {
         return matchingCollections;
     }
 
-}
+    public MongoCollection<Document> getCollectionByName(String collectionName){
+        return  database.getCollection(collectionName);
+    }
 
+}
