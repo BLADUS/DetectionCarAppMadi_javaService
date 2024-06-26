@@ -10,6 +10,8 @@ import com.example.DetectionCarAppMadi_javaService.Entity.User;
 import com.example.DetectionCarAppMadi_javaService.Services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class UserController {
@@ -53,5 +55,12 @@ public class UserController {
         model.addAttribute("currentUser", currentUser);
         return "homePage";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
+    }
+    
 }
 
